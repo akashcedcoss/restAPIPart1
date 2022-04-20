@@ -1,0 +1,41 @@
+<?php
+    
+?>
+<div class="search">
+  <input type="text" name="searchValue" onkeyup="search()" id="searchValue">
+</div>
+<table class="table" id = "myTable">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Category</th>
+      <th scope="col">Price</th>
+      <th scope="col">Stock</th>
+      
+      
+    </tr>
+  </thead>
+  <?php foreach($results as $value) { ?>
+    
+  <tbody>
+    <tr>
+      <td><?php echo $value['_id']; ?></td>
+      <td><?php echo $value['Name']; ?></td>
+      <td><?php echo $value['Category']; ?></td>
+      <td><?php echo $value['Price']; ?></td>
+      <td><?php echo $value['Stock']; ?></td>
+     
+      
+      
+    </tr>
+  </tbody>
+  <?php } ?>
+</table>
+
+
+
+<div id="data" class="w-50 m-auto">
+
+</div>
+</div>
