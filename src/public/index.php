@@ -8,8 +8,8 @@ use Phalcon\Url;
 use Phalcon\Db\Adapter\Pdo\Mysql;
 use Phalcon\Config;
 use Phalcon\Mvc\Micro;
-
-
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
 
 $config = new Config([]);
 
@@ -40,6 +40,7 @@ $loader->registerNamespaces(
 $loader->register();
 
 $prod = new Api\Handlers\Product();
+$user = new Api\Handlers\User();
 $container = new FactoryDefault();
 $app = new Micro($container);
 
@@ -51,15 +52,16 @@ $container->set(
     },
     true
 );
+
 $cont = explode('/', $app->request->get('_url'));
 $cls = str_replace("/", "", $cont[1]);
 if ($cls == "products") {
     $app->before(
         function () use ($app) {
             $key = "example_key";
-            $token = $app->request->getHeader("Bearer");
+            $token = $app->request->getQuery("token");
             $decoded = Firebase\JWT\JWT::decode($token, new Firebase\JWT\Key($key, 'HS256'));
-            if (!$decoded->user_id) {
+            if (!$decoded->role == "admin") {
                 echo "Token not found";
                 return false;
             } else {
@@ -95,6 +97,14 @@ $app->get(
     [
         $prod,
         'jwt'
+    ]
+);
+
+$app->get(
+    '/signup',
+    [
+        $user,
+        'signup'
     ]
 );
 

@@ -64,7 +64,7 @@ class Product extends Injectable {
             "iss" => "http://example.org",
             "aud" => "http://example.com",
             "iat" => $issued,
-            "user_id" => "420",
+            "role" => "admin",
         );
         $token = JWT::encode($payload, $key, 'HS256');
         echo $token;
