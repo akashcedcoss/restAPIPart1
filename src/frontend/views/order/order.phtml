@@ -1,0 +1,30 @@
+<p><a href="/order/orderlist" class = "btn btn-primary">Show Orders</a>
+</p>
+<form action="/order/orderplace" method="post">
+<div class="container">
+  <p>
+<label for="productdetails">Choose a Product:</label>
+<select id="productdetails" name = "product">
+    <?php foreach($data as $val) {?>
+  <option value="<?php echo $val['Name']; ?>" name="option"><?php echo $val['Name']; ?></option>
+  <?php } ?>
+</select>
+</p>
+<p>
+<label for="name">Name:</label>
+<input type="text" name="name" id="">
+</p>
+<p>
+  <label for="quantity">Select Quantity</label>
+  <input type="number" name="quantity" id="">
+</p>
+<p>
+  <input type="hidden" name="date" value="<?php echo date("m/d/y"); ?>">
+</p>
+<p>
+<input type="submit" value="Place Order" class="add m-3">
+
+</p>
+</div>
+</form>
+

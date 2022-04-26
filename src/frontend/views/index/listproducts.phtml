@@ -1,0 +1,49 @@
+<?php
+
+?>
+<div class="search">
+  <input type="text" name="searchValue" onkeyup="search()" id="searchValue">
+</div>
+<table class="table" id = "myTable">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Category</th>
+      <th scope="col">Price</th>
+      <th scope="col">Stock</th>
+      <th scope="col">Action</th>
+      <th scope="col">Explore</th>
+    </tr>
+  </thead>
+  <?php foreach($results as $value) { ?>
+    
+  <tbody>
+    <tr>
+      <td><?php echo $value['_id']; ?></td>
+      <td><?php echo $value['Name']; ?></td>
+      <td><?php echo $value['Category']; ?></td>
+      <td><?php echo $value['Price']; ?></td>
+      <td><?php echo $value['Stock']; ?></td>
+     
+
+      <td><a href="edit?id=<?php echo $value['_id'] ?>"><input type="submit" value="Edit"></a>
+      <a href="delete?id=<?php echo $value['_id'] ?>"><input type="submit" value="Delete"></a></td>
+      <td><input type = "submit" class = "btn btn-primary" data-id = "<?php echo $value['_id'] ?>" value = "View More" id = "show_popup"></td>
+      
+      
+      
+    </tr>
+  </tbody>
+  <?php } ?>
+</table>
+
+<div id="popup" class="w-75 bg-dark text-light" style="position: absolute; top:15%; left:12.5%; height:400px; opacity:0.8;">
+<div class="d-flex justify-content-end">
+    <a  id = "close" class="text-light btn btn-danger">X</a>
+</div>
+
+<div id="data" class="w-50 m-auto">
+
+</div>
+</div>

@@ -6,14 +6,16 @@ use Phalcon\Di\Injectable;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
-class Product extends Injectable {
-    function get($select = "", $limit = 10, $page = 1) {
+
+class Product extends Injectable
+{
+    function get($select = "", $limit = 10, $page = 1)
+    {
         $products = array(
-            array("select"=>$select,"where"=>$where,"limit"=>$limit,"page"=>$page),
-            array("name"=>"Product 2", "price"=>40),
+            array("select" => $select, "where" => $where, "limit" => $limit, "page" => $page),
+            array("name" => "Product 2", "price" => 40),
         );
         return json_encode($products);
-
     }
     function getproduct()
     {
@@ -40,7 +42,7 @@ class Product extends Injectable {
         foreach ($products as $product) {
             print_r($product);
         }
-        
+
         die;
     }
     function limit($number)
@@ -64,11 +66,10 @@ class Product extends Injectable {
             "iss" => "http://example.org",
             "aud" => "http://example.com",
             "iat" => $issued,
-            "user_id" => "420",
+            "role" => "admin",
         );
         $token = JWT::encode($payload, $key, 'HS256');
         echo $token;
         die;
     }
-    
 }
