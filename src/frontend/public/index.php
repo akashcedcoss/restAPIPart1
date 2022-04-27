@@ -71,7 +71,7 @@ $container->setShared(
     'mongo',
     function () {
         $mongo = new \MongoDB\Client("mongodb://root:password123@mongo");
-        return $mongo->demo;
+        return $mongo->demo2;
     }
 );
 

@@ -37,4 +37,18 @@ class AdminController extends Controller
         $data = $this->mongo->orders->find();
         $this->view->data = $data;
     }
+    public function createorderAction(){
+        $data = $this->request->getPost();
+        $succes = $this->mongo->order->insertOne($data);
+    }
+    public function updateorderAction() {
+        $data = $this->request->getPost();
+        $status = $data['status'];
+        $id= $data['id'];
+        $order =  $this->mongo->order->updateOne(
+            ['orderid' => new \MongoDB\BSON\ObjectID($id)],
+            ['$set' => ["status" => "$status"]],
+        );
+        die;
+    }
 }

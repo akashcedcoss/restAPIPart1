@@ -1,0 +1,30 @@
+<?php
+
+
+
+?>
+
+<form action="/api/order" method="post">
+<?php foreach($data as $val){ 
+    
+?>
+<p>
+<label for="name">Name:</label>
+<input type="text" name="name" id=""value="<?php echo $val['name'] ?>">
+</p>
+<p>
+  <label for="price">Price</label>
+  <input type="number" name="price" id="" value="<?php echo $val['price'] ?>">
+</p>
+<p>
+  <label for="quantity">Quantity</label>
+  <input type="number" name="quantity" id="">
+</p>
+<p>
+  <input type="hidden" name="date" value="<?php echo date("m/d/y"); ?>">
+</p>
+<p>
+<input type="submit" value="Place Order" class="add m-3">
+</p>
+<?php } ?>
+</form>

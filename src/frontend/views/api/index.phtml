@@ -1,0 +1,43 @@
+<?php
+// echo "<pre>";
+// foreach($data as $val){
+//     print_r($val);
+// }
+
+?>
+
+<div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              
+              <th scope="col">ID</th>
+              <th scope="col">NAME</th>
+              <th scope="col">TITLE</th>
+              <th scope="col">PRICE</th>
+              <th scope="col">Action</th>
+
+              
+              
+            </tr>
+          </thead>
+          <tbody>
+            <?php
+             $html="";
+             foreach($data as $v) {
+               $html.='<form method="POST" action="/api/createOrder"<tr>
+               <td>'.$v->_id.'</td>
+               <td>'.$v->name.'</td>
+               <td>'.$v->title.'</td>
+              <td>'.$v->price.'</td>
+              <td>
+              <input type="hidden" value="'.$v->_id.'" name="hidden">
+              <input type="submit" value="Place Order">
+              </td>
+
+              
+           </tr></form>';
+             }
+             $html.="";
+             echo $html;
+           ?> 

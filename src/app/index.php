@@ -128,16 +128,6 @@ $app->Post(
     ]
 );
 
-// $app->get(
-//     '/app/signup',
-//     [
-//         $user,
-//         'signup'
-//     ]
-// );
-
-
-
 $app->handle(
     $_SERVER['REQUEST_URI']
 );
