@@ -11,6 +11,8 @@ use Phalcon\Url;
 use Phalcon\Db\Adapter\Pdo\Mysql;
 use Phalcon\Config;
 
+(new \Phalcon\Debug())->listen();
+
 $config = new Config([]);
 require_once"../vendor/autoload.php";
 // Define some absolute path constants to aid in locating resources
@@ -74,6 +76,12 @@ $container->setShared(
         return $mongo->demo2;
     }
 );
+// Implemented debug Prophiler
+$profiler = new \Fabfuel\Prophiler\Profiler();
+
+$toolbar = new \Fabfuel\Prophiler\Toolbar($profiler);
+$toolbar->addDataCollector(new \Fabfuel\Prophiler\DataCollector\Request());
+echo $toolbar->render();
 
 
 
